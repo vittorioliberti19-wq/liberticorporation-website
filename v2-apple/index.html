@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liberti Global Corp</title>
+    <meta name="description" content="Building and operating businesses across industries. Liberti Global Corp is a parent company with a diversified portfolio across the Americas.">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --black:#000;--dark:#111;--card:#1a1a1a;--card-hover:#222;
+            --white:#f5f5f7;--gray:#86868b;--gray-light:#a1a1a6;
+            --blue:#2997ff;--orange:#e8590c;--purple:#a78bfa;
+            --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+            --mw:980px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font);background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;font-size:17px;line-height:1.5}
+        a{text-decoration:none;color:var(--blue)}
+        a:hover{text-decoration:underline}
+        img{max-width:100%;display:block}
+
+        .fi{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+        .fi.v{opacity:1;transform:none}
+        .fi-d1{transition-delay:.1s}.fi-d2{transition-delay:.2s}.fi-d3{transition-delay:.3s}
+        @media(prefers-reduced-motion:reduce){.fi{opacity:1;transform:none;transition:none}}
+
+        /* NAV */
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+        .nav-c{max-width:1024px;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:48px}
+        .nav-logo{font-size:15px;font-weight:600;color:var(--white);letter-spacing:-.01em}
+        .nav-links{display:flex;gap:28px;list-style:none}
+        .nav-links a{font-size:12px;color:var(--gray-light);transition:color .2s;text-decoration:none}
+        .nav-links a:hover{color:var(--white)}
+        .nav-tog{display:none;background:0;border:0;cursor:pointer;padding:6px}
+        .nav-tog svg{width:18px;height:18px;stroke:var(--white)}
+        .mob-menu{display:none;position:fixed;top:48px;left:0;right:0;background:rgba(0,0,0,.97);padding:20px 22px;z-index:99;border-bottom:1px solid rgba(255,255,255,.08)}
+        .mob-menu.on{display:block}
+        .mob-menu a{display:block;padding:12px 0;font-size:15px;color:var(--gray-light);border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+
+        /* HERO */
+        .hero{padding:160px 0 80px;text-align:center;overflow:hidden}
+        .hero-w{max-width:var(--mw);margin:0 auto;padding:0 22px}
+        .hero h1{font-size:clamp(48px,7vw,80px);font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:16px;background:linear-gradient(180deg,#fff 40%,var(--gray));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;will-change:transform}
+        .hero p{font-size:21px;color:var(--gray);max-width:500px;margin:0 auto;font-weight:400;line-height:1.5;will-change:transform,opacity}
+
+        /* STATS */
+        .stats-s{padding:60px 0;border-top:1px solid rgba(255,255,255,.06)}
+        .stats-tag{text-align:center;font-size:14px;color:var(--gray);font-style:italic;margin-bottom:40px}
+        .stats-g{max-width:var(--mw);margin:0 auto;padding:0 22px;display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+        .st{text-align:center;padding:0 8px}
+        .st-n{font-size:48px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:6px;background:linear-gradient(180deg,#fff,var(--gray-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .st-l{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--gray)}
+
+        /* SECTION */
+        .sec{padding:100px 0}
+        .sec-dark{background:var(--dark)}
+        .sec-w{max-width:var(--mw);margin:0 auto;padding:0 22px}
+        .sec-h{text-align:center;margin-bottom:56px}
+        .sec-over{font-size:14px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+        .sec-title{font-size:clamp(32px,4vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+        .sec-sub{font-size:17px;color:var(--gray);max-width:600px;margin:16px auto 0;line-height:1.6}
+
+        /* ABOUT */
+        .about-txt{max-width:640px;margin:0 auto;text-align:center}
+        .about-txt p{font-size:17px;color:var(--gray-light);line-height:1.7;margin-bottom:16px}
+
+        /* CARDS */
+        .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+        .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+        .card{background:var(--card);border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;transition:background .3s;position:relative;overflow:hidden}
+        .card:hover{background:var(--card-hover)}
+        .card-glow{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .3s;border-radius:inherit;z-index:1}
+        .card:hover .card-glow,.org-c:hover .card-glow,.rm-card:hover .card-glow{opacity:1}
+        .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:20px}
+        .card-logo{height:48px;max-width:160px;display:flex;align-items:center}
+        .card-logo img{max-height:100%;max-width:100%;object-fit:contain;opacity:.9}
+        .card-logo img.inv{filter:brightness(0) invert(1)}
+        .card-logo img.boost{opacity:1;filter:brightness(1.4) contrast(1.3)}
+        .card-logo.lg{height:64px;max-width:200px}
+        .card-logo.md{height:60px;max-width:190px}
+
+        .badge{font-size:11px;font-weight:600;padding:5px 14px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+        .badge-blue{color:var(--blue);background:rgba(41,151,255,.12)}
+        .badge-orange{color:var(--orange);background:rgba(232,89,12,.12)}
+        .badge-gray{color:var(--gray-light);background:rgba(255,255,255,.08)}
+
+        .card-ind{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gray);margin-bottom:10px}
+        .card-name{font-size:21px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px}
+        .card-desc{font-size:14px;line-height:1.7;color:var(--gray-light);flex:1}
+        .card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+        .card-emp{font-size:13px;color:var(--gray)}
+        .card-emp strong{color:var(--white);font-weight:600}
+        .card-link{font-size:13px;color:var(--blue);text-decoration:none}
+        .card-link:hover{text-decoration:underline}
+
+        .card-name-text{font-size:17px;font-weight:600;color:var(--white)}
+
+        .disclaimer{font-size:14px;color:var(--gray);font-style:italic;max-width:640px;margin:0 auto 40px;text-align:center;line-height:1.6}
+
+        /* ROADMAP */
+        .rm-card{background:var(--card);border-radius:20px;padding:48px;max-width:800px;margin:0 auto;position:relative;overflow:hidden;transition:background .3s}
+        .rm-card:hover{background:var(--card-hover)}
+        .rm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--orange))}
+        .rm-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+        .rm-title{font-size:28px;font-weight:700;letter-spacing:-.02em}
+        .rm-badge{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 16px;border-radius:100px;color:var(--orange);background:rgba(232,89,12,.12);border:1px solid rgba(232,89,12,.2)}
+        .rm-status{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:14px}
+        .rm-desc{font-size:15px;line-height:1.8;color:var(--gray-light);margin-bottom:24px}
+        .rm-tags{display:flex;flex-wrap:wrap;gap:8px}
+        .rm-tag{font-size:12px;font-weight:500;color:var(--gray-light);padding:6px 14px;background:rgba(255,255,255,.06);border-radius:100px}
+
+        /* ORG */
+        .org{max-width:960px;margin:0 auto}
+        .org-top{display:flex;justify-content:center;margin-bottom:48px}
+        .org-box{padding:28px 52px;background:var(--blue);border-radius:16px;text-align:center;position:relative}
+        .org-box::after{content:'';position:absolute;bottom:-48px;left:50%;width:2px;height:48px;background:rgba(255,255,255,.15)}
+        .org-box-n{font-size:20px;font-weight:700}
+        .org-box-t{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:2px}
+
+        .org-br{margin-bottom:40px}
+        .org-br-label{text-align:center;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px;padding-top:48px}
+        .org-br-label.lb{color:var(--blue)}.org-br-label.lo{color:var(--orange)}
+        .org-line{position:relative;height:20px}
+        .org-line.solid::before{content:'';position:absolute;top:0;left:16%;right:16%;height:2px;background:rgba(255,255,255,.1)}
+        .org-line.dot::before{content:'';position:absolute;top:0;left:7%;right:7%;height:0;border-top:2px dashed rgba(255,255,255,.08)}
+
+        .org-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+        .org-c{text-align:center;padding:20px 10px;background:var(--card);border-radius:14px;position:relative;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+        .org-c:hover{background:var(--card-hover)}
+        .org-c-logo{flex:1;display:flex;align-items:center;justify-content:center}
+        .org-c::before{content:'';position:absolute;top:-11px;left:50%;width:2px;height:10px;background:rgba(255,255,255,.1)}
+        .org-c.dline::before{border-left:2px dashed rgba(255,255,255,.08);background:none}
+        .org-c.tb{border-top:3px solid var(--blue)}.org-c.to{border-top:3px solid var(--orange)}.org-c.tg{border-top:3px solid var(--gray)}
+
+        .org-c-logo{height:48px;margin-bottom:8px}
+        .org-c-logo img{max-height:100%;max-width:85%;object-fit:contain;opacity:.9}
+        .org-c-logo img{filter:brightness(0) invert(1)}
+        .org-c-n{font-size:15px;font-weight:600;margin-bottom:2px}
+        .org-c-p{font-size:11px;font-weight:600}
+        .org-c-p.cb{color:var(--blue)}.org-c-p.co{color:var(--orange)}.org-c-p.cg{color:var(--gray)}
+        .org-c-i{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+        .org-leg{display:flex;justify-content:center;gap:24px;margin-top:40px;flex-wrap:wrap}
+        .org-leg-i{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray)}
+        .org-leg-d{width:14px;height:3px;border-radius:2px}
+        .org-leg-d.db{background:var(--blue)}.org-leg-d.do{background:var(--orange)}.org-leg-d.dg{background:var(--gray)}
+
+        /* CONTACT */
+        .contact-w{max-width:500px;margin:0 auto;text-align:center}
+        .contact-txt{font-size:17px;color:var(--gray-light);line-height:1.7;margin-bottom:40px}
+        .c-item{margin-bottom:24px}
+        .c-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:6px}
+        .c-val{font-size:17px;color:var(--gray-light)}
+        .c-val a{color:var(--gray-light);text-decoration:none}
+        .c-val a:hover{color:var(--white)}
+
+        /* FOOTER */
+        footer{border-top:1px solid rgba(255,255,255,.06);padding:32px 0;text-align:center}
+        footer p{font-size:12px;color:var(--gray);line-height:1.8}
+
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .nav-links{display:none}.nav-tog{display:block}
+            .hero{padding:120px 0 60px}
+            .hero h1{font-size:44px}
+            .stats-g{grid-template-columns:repeat(3,1fr);gap:24px 0}
+            .st-n{font-size:36px}
+            .grid-2,.grid-3{grid-template-columns:1fr}
+            .org-g3{grid-template-columns:repeat(2,1fr)}
+            .org-leg{gap:12px}
+            .rm-card{padding:32px 24px}
+            .sec{padding:72px 0}
+        }
+        @media(max-width:480px){
+            .stats-g{grid-template-columns:repeat(2,1fr)}
+            .org-g3{grid-template-columns:1fr 1fr;gap:10px}
+            .card{padding:28px 24px}
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-c">
+        <a href="#" class="nav-logo">Liberti Global Corp</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#ai">AI</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#structure">Structure</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-tog" id="mt" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+</nav>
+<div class="mob-menu" id="mm">
+    <a href="#about" onclick="cm()">About</a>
+    <a href="#portfolio" onclick="cm()">Portfolio</a>
+    <a href="#ai" onclick="cm()">AI</a>
+    <a href="#roadmap" onclick="cm()">Roadmap</a>
+    <a href="#structure" onclick="cm()">Structure</a>
+    <a href="#contact" onclick="cm()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-w">
+        <h1 class="fi">Building and operating businesses across industries.</h1>
+        <p class="fi fi-d1">We believe in the power of entrepreneurship to transform communities. Through strategic investment and hands-on management, we build and scale businesses that create stable employment and sustainable growth across the Americas.</p>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-s">
+    <div class="stats-tag fi">Building and consolidating a diversified portfolio since 2013.</div>
+    <div class="stats-g">
+        <div class="st fi"><div class="st-n">13+</div><div class="st-l">Years Building</div></div>
+        <div class="st fi fi-d1"><div class="st-n">3</div><div class="st-l">Wholly-Owned</div></div>
+        <div class="st fi fi-d1"><div class="st-n">6</div><div class="st-l">Affiliated</div></div>
+        <div class="st fi fi-d2"><div class="st-n">7</div><div class="st-l">Industries</div></div>
+        <div class="st fi fi-d2"><div class="st-n">100+</div><div class="st-l">Employees</div></div>
+        <div class="st fi fi-d3"><div class="st-n">1</div><div class="st-l">Upcoming</div></div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec sec-dark" id="about">
+    <div class="sec-w">
+        <div class="sec-h fi">
+            <div class="sec-over">The Parent Company Philosophy</div>
+            <div class="sec-title">Building value through<br>strategic management.</div>
+        </div>
+        <div class="about-txt fi fi-d1">
+            <p>Liberti Global Corp is a parent company that oversees a diversified portfolio of businesses across marketing, digital advertising, media production, automotive services, construction, industrial services, and retail.</p>
+            <p>The company provides centralized operations, strategic planning, and financial administration for its subsidiaries and affiliated companies.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHOLLY-OWNED -->
+<section class="sec" id="portfolio">
+    <div class="sec-w">
+        <div class="sec-h fi">
+            <div class="sec-over">Wholly-Owned Subsidiaries</div>
+            <div class="sec-title">Direct control,<br>full integration.</div>
+        </div>
+        <div class="grid-3">
+            <div class="card fi">
+                <div class="card-top">
+                    <div class="card-logo"><div class="card-name-text">Liberti Investment</div></div>
+                    <div class="badge badge-blue">100%</div>
+                </div>
+                <div class="card-ind">Management & Fund Administration</div>
+                <div class="card-name">Liberti Investment</div>
+                <p class="card-desc">The administrative arm of the parent company, providing centralized financial management services.</p>
+                <div class="card-foot"><div class="card-emp">DBA of Liberti Global Corp</div></div>
+            </div>
+            <div class="card fi fi-d1">
+                <div class="card-top">
+                    <div class="card-logo" style="height:40px"><img src="../assets/logos/1bite-logo.png" alt="1bite Studio"></div>
+                    <div class="badge badge-blue">100%</div>
+                </div>
+                <div class="card-ind">Creative Marketing & Advertising</div>
+                <div class="card-name">1bite Studio</div>
+                <p class="card-desc">Full-service creative agency specializing in branding, content production, social media strategy, and paid media. 1bite helps businesses build and elevate their digital presence through data-driven creative solutions.</p>
+                <div class="card-foot">
+                    <div class="card-emp"><strong>40+</strong> Employees</div>
+                    <a href="https://www.1bite.studio" target="_blank" rel="noopener noreferrer" class="card-link">1bite.studio</a>
+                    <a href="https://www.instagram.com/1bite.studio" target="_blank" rel="noopener noreferrer" class="card-link">@1bite.studio</a>
+                </div>
+            </div>
+            <div class="card fi fi-d2">
+                <div class="card-top">
+                    <div class="card-logo md"><img src="../assets/logos/clandestino-logo.png" alt="Clandestino Barber" class="inv"></div>
+                    <div class="badge badge-blue">100%</div>
+                </div>
+                <div class="card-ind">Retail & Lifestyle</div>
+                <div class="card-name">Clandestino Barber</div>
+                <p class="card-desc">Premium barbershop experience offering grooming and personal care services with a focus on quality craftsmanship, attention to detail, and a distinctive atmosphere.</p>
+                <div class="card-foot">
+                    <div class="card-emp"><strong>15+</strong> Employees</div>
+                    <a href="https://www.instagram.com/clandestinove77" target="_blank" rel="noopener noreferrer" class="card-link">@clandestinove77</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AFFILIATED -->
+<section class="sec sec-dark">
+    <div class="sec-w">
+        <div class="sec-h fi">
+            <div class="sec-over" style="color:var(--orange)">Affiliated Ventures</div>
+            <div class="sec-title">Strategic partnerships<br>and equity positions.</div>
+        </div>
+        <p class="disclaimer fi fi-d1">The company's director also maintains personal equity positions in the following complementary businesses. These ventures are independently operated and are not subsidiaries or assets of Liberti Global Corp.</p>
+        <div class="grid-2">
+            <div class="card fi">
+                <div class="card-top">
+                    <div class="card-logo"><img src="../assets/logos/liberty-logo.png" alt="Liberty Constructions"></div>
+                    <div class="badge badge-orange">Full Ownership</div>
+                </div>
+                <div class="card-ind">Residential Remodeling & Architectural Design</div>
+                <div class="card-name">Liberty Constructions & Design</div>
+                <p class="card-desc">Residential remodeling and design firm specializing in home renovations, interior transformations, and architectural plan development. Delivers end-to-end project management from concept design through construction completion for private residential clients.</p>
+                <div class="card-foot"><div class="card-emp"><strong>10+</strong> Employees</div></div>
+            </div>
+            <div class="card fi fi-d1">
+                <div class="card-top">
+                    <div class="card-logo"><img src="../assets/logos/studio4-logo.png" alt="The Studio 4"></div>
+                    <div class="badge badge-orange">Full Ownership</div>
+                </div>
+                <div class="card-ind">Photography & Audiovisual Production</div>
+                <div class="card-name">The Studio 4</div>
+                <p class="card-desc">Professional photography and audiovisual production studio available for rent to photographers, agencies, and brands. Provides fully equipped spaces and production infrastructure for commercial shoots, content creation, and brand campaigns.</p>
+                <div class="card-foot">
+                    <div class="card-emp"><strong>4+</strong> Employees</div>
+                    <a href="https://www.instagram.com/thestudio4.ve" target="_blank" rel="noopener noreferrer" class="card-link">@thestudio4.ve</a>
+                </div>
+            </div>
+            <div class="card fi">
+                <div class="card-top">
+                    <div class="card-logo"><img src="../assets/logos/detailpro-logo.png" alt="Detail Pro Car Wash"></div>
+                    <div class="badge badge-orange">Equity Partner</div>
+                </div>
+                <div class="card-ind">Automotive Services</div>
+                <div class="card-name">Detail Pro Car Wash</div>
+                <p class="card-desc">Professional automotive detailing and car wash service delivering premium vehicle care with meticulous attention to detail and customer satisfaction.</p>
+                <div class="card-foot">
+                    <div class="card-emp"><strong>10+</strong> Employees</div>
+                    <a href="https://www.instagram.com/detailprocarwashve" target="_blank" rel="noopener noreferrer" class="card-link">@detailprocarwashve</a>
+                </div>
+            </div>
+            <div class="card fi fi-d1">
+                <div class="card-top">
+                    <div class="card-logo"><img src="../assets/logos/1pixel-logo.png" alt="1Pixel"></div>
+                    <div class="badge badge-gray">Minority Stake</div>
+                </div>
+                <div class="card-ind">Outdoor Digital Advertising</div>
+                <div class="card-name">1Pixel</div>
+                <p class="card-desc">Outdoor digital advertising company operating a network of 92+ LED billboards across strategic high-traffic locations. Combines high-impact digital displays with data-driven audience measurement to deliver measurable results for advertisers.</p>
+                <div class="card-foot">
+                    <div class="card-emp"><strong>5+</strong> Employees</div>
+                    <a href="https://www.1pixelve.com" target="_blank" rel="noopener noreferrer" class="card-link">1pixelve.com</a>
+                    <a href="https://www.instagram.com/1pixelve" target="_blank" rel="noopener noreferrer" class="card-link">@1pixelve</a>
+                </div>
+            </div>
+            <div class="card fi">
+                <div class="card-top">
+                    <div class="card-logo lg"><img src="../assets/logos/innoven-logo.png" alt="Innoven C.A." class="boost"></div>
+                    <div class="badge badge-gray">Minority Stake</div>
+                </div>
+                <div class="card-ind">Industrial & Mechanical Services</div>
+                <div class="card-name">Innoven C.A.</div>
+                <p class="card-desc">Industrial contracting company providing maintenance, mechanical engineering, refrigeration, HVAC systems, and infrastructure solutions for commercial and industrial facilities.</p>
+                <div class="card-foot">
+                    <div class="card-emp"><strong>25+</strong> Employees</div>
+                    <a href="https://www.instagram.com/innoven.ca" target="_blank" rel="noopener noreferrer" class="card-link">@innoven.ca</a>
+                </div>
+            </div>
+            <div class="card fi fi-d1">
+                <div class="card-top">
+                    <div class="card-logo lg"><img src="../assets/logos/apex-logo.png" alt="Apex Solutions" class="boost"></div>
+                    <div class="badge badge-gray">Minority Stake</div>
+                </div>
+                <div class="card-ind">Construction & Civil Engineering</div>
+                <div class="card-name">Apex Solutions</div>
+                <p class="card-desc">Building and condominium services company specializing in civil engineering, building maintenance, infrastructure management, and construction project oversight for residential and commercial properties.</p>
+                <div class="card-foot"><div class="card-emp"><strong>10+</strong> Employees</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI -->
+<section class="sec" id="ai">
+    <div class="sec-w">
+        <div class="sec-h fi">
+            <div class="sec-over" style="color:var(--purple)">Technology & Intelligence</div>
+            <div class="sec-title">AI-Powered Business<br>Operations.</div>
+        </div>
+        <div class="about-txt fi fi-d1" style="margin-bottom:48px">
+            <p>We have fully integrated artificial intelligence into our core business units — not as a tool, but as an operational layer that runs alongside our teams 24/7.</p>
+        </div>
+        <div class="grid-2">
+            <div class="card fi">
+                <div class="card-ind">1bite Studio &mdash; Creative & Social Media Agency</div>
+                <div class="card-name">Lead & Client Intelligence Agent</div>
+                <p class="card-desc">A dedicated AI agent handles real-time lead qualification, client communication via WhatsApp Business, CRM management, and daily performance reporting across 37+ active client groups. It monitors brand activity, detects service complaints, and escalates opportunities — autonomously and instantly.</p>
+            </div>
+            <div class="card fi fi-d1">
+                <div class="card-ind">1Pixel &mdash; LED Advertising Network</div>
+                <div class="card-name">Sales Pipeline Agent</div>
+                <p class="card-desc">An AI agent manages the full sales pipeline: prospecting, follow-ups, contract tracking, and lead scoring across multiple channels. It identifies high-intent leads, prioritizes closings, and delivers daily intelligence reports to the sales team.</p>
+            </div>
+            <div class="card fi">
+                <div class="card-ind">Detail Pro Car Wash &mdash; Automotive Services</div>
+                <div class="card-name">Sales & Prospecting Agent</div>
+                <p class="card-desc">An AI agent manages prospecting, follow-ups, contract tracking, and lead scoring across multiple channels. It identifies high-intent leads, prioritizes closings, and delivers daily intelligence reports to the sales team.</p>
+            </div>
+            <div class="card fi fi-d1">
+                <div class="card-ind">Innoven C.A. &mdash; Industrial Services</div>
+                <div class="card-name">Team Assistant & Operations Agent</div>
+                <p class="card-desc">An AI assistant embedded across the entire team, supporting day-to-day operations, internal coordination, task management, and real-time decision support for field and office personnel.</p>
+            </div>
+            <div class="card fi">
+                <div class="card-ind">All Business Units</div>
+                <div class="card-name">GIA CFO &mdash; Executive Financial Intelligence</div>
+                <p class="card-desc">A dedicated CFO agent monitors cash flow, consolidates financial data across business units, tracks key performance indicators, and delivers structured financial briefings to leadership. It turns raw numbers into actionable insights — in real time.</p>
+            </div>
+            <div class="card fi fi-d1">
+                <div class="card-ind">All Business Units</div>
+                <div class="card-name">Financial Advisor Agent</div>
+                <p class="card-desc">An AI-powered financial advisor that analyzes accounting data across all portfolio companies, identifies anomalies, generates alerts on budget variances, and provides strategic recommendations to optimize financial performance across the organization.</p>
+            </div>
+        </div>
+        <div class="about-txt fi" style="margin-top:48px">
+            <p style="font-size:14px;color:var(--gray);font-style:italic">All agents operate on a shared coordination layer managed by GIA — our central AI principal — which orchestrates inter-agent communication, daily briefings, and executive reporting directly to leadership.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="sec sec-dark" id="roadmap">
+    <div class="sec-w">
+        <div class="sec-h fi">
+            <div class="sec-over">2026 Roadmap</div>
+            <div class="sec-title">Upcoming projects.</div>
+        </div>
+        <div class="rm-card fi fi-d1">
+            <div class="rm-head">
+                <div class="rm-title">FastRacing</div>
+                <div class="rm-badge">In Development</div>
+            </div>
+            <div class="rm-status">Pre-development / Planning Phase</div>
+            <p class="rm-desc">A 15,000 m&sup2; electric go-kart entertainment complex featuring two professional-grade tracks &mdash; one designed for adults and one for children. The facility will operate exclusively with electric karts, offering a premium, eco-friendly racing experience. The project includes spectator areas, a food and beverage zone, event spaces for corporate team-building and private parties, and a pro shop. Designed to become a regional entertainment destination combining motorsport excitement with modern sustainability standards.</p>
+            <div class="rm-tags">
+                <span class="rm-tag">15,000 m&sup2; Total Area</span>
+                <span class="rm-tag">2 Tracks (Adult + Children)</span>
+                <span class="rm-tag">Electric Go-Karts</span>
+                <span class="rm-tag">Spectator & Hospitality</span>
+                <span class="rm-tag">Event Hosting</span>
+                <span class="rm-tag">Food & Beverage</span>
+                <span class="rm-tag">Pro Shop</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ORG CHART -->
+<section class="sec" id="structure">
+    <div class="sec-w">
+        <div class="sec-h fi">
+            <div class="sec-over">Organizational Architecture</div>
+            <div class="sec-title">Corporate structure.</div>
+        </div>
+        <div class="org fi fi-d1">
+            <div class="org-top">
+                <div class="org-box">
+                    <div class="org-box-n">Liberti Global Corp</div>
+                    <div class="org-box-t">Parent Company</div>
+                </div>
+            </div>
+            <div class="org-br">
+                <div class="org-br-label lb">Wholly-Owned Subsidiaries</div>
+                <div class="org-line solid"></div>
+                <div class="org-g3">
+                    <div class="org-c tb">
+                        <div class="org-c-logo" style="height:48px;display:flex;align-items:center;justify-content:center"><span style="font-size:15px;font-weight:600">Liberti Investment</span></div>
+                        <div class="org-c-p cb">100%</div>
+                        <div class="org-c-i">Fund Admin</div>
+                    </div>
+                    <div class="org-c tb">
+                        <div class="org-c-logo" style="height:48px"><img src="../assets/logos/1bite-logo.png" alt="" style="max-height:30px"></div>
+                        <div class="org-c-p cb">100%</div>
+                        <div class="org-c-i">Marketing</div>
+                    </div>
+                    <div class="org-c tb">
+                        <div class="org-c-logo" style="height:48px"><img src="../assets/logos/clandestino-logo.png" alt=""></div>
+                        <div class="org-c-p cb">100%</div>
+                        <div class="org-c-i">Retail</div>
+                    </div>
+                </div>
+            </div>
+            <div class="org-br">
+                <div class="org-br-label lo">Director's Affiliated Ventures</div>
+                <div class="org-line dot"></div>
+                <div class="org-g3">
+                    <div class="org-c to dline">
+                        <div class="org-c-logo"><img src="../assets/logos/liberty-logo.png" alt=""></div>
+                        <div class="org-c-p co">Full Ownership</div>
+                        <div class="org-c-i">Remodeling</div>
+                    </div>
+                    <div class="org-c to dline">
+                        <div class="org-c-logo"><img src="../assets/logos/studio4-logo.png" alt=""></div>
+                        <div class="org-c-p co">Full Ownership</div>
+                        <div class="org-c-i">Production</div>
+                    </div>
+                    <div class="org-c to dline">
+                        <div class="org-c-logo"><img src="../assets/logos/detailpro-logo.png" alt=""></div>
+                        <div class="org-c-p co">Equity Partner</div>
+                        <div class="org-c-i">Automotive</div>
+                    </div>
+                    <div class="org-c tg dline">
+                        <div class="org-c-logo"><img src="../assets/logos/1pixel-logo.png" alt=""></div>
+                        <div class="org-c-p cg">Minority Stake</div>
+                        <div class="org-c-i">Advertising</div>
+                    </div>
+                    <div class="org-c tg dline">
+                        <div class="org-c-logo"><img src="../assets/logos/innoven-logo.png" alt=""></div>
+                        <div class="org-c-p cg">Minority Stake</div>
+                        <div class="org-c-i">Industrial</div>
+                    </div>
+                    <div class="org-c tg dline">
+                        <div class="org-c-logo"><img src="../assets/logos/apex-logo.png" alt=""></div>
+                        <div class="org-c-p cg">Minority Stake</div>
+                        <div class="org-c-i">Civil Eng.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="org-leg">
+                <div class="org-leg-i"><div class="org-leg-d db"></div>Wholly-Owned</div>
+                <div class="org-leg-i"><div class="org-leg-d do"></div>Full Ownership / Partner</div>
+                <div class="org-leg-i"><div class="org-leg-d dg"></div>Minority Stake</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-dark" id="contact">
+    <div class="sec-w">
+        <div class="sec-h fi">
+            <div class="sec-over">Executive Inquiries</div>
+            <div class="sec-title">Get in touch.</div>
+        </div>
+        <div class="contact-w fi fi-d1">
+            <p class="contact-txt">For business inquiries, partnership opportunities, or institutional verification, please contact us through the information provided below.</p>
+            <div class="c-item">
+                <div class="c-label">Phone</div>
+                <div class="c-val"><a href="tel:+17869063354">+1 (786) 906-3354</a></div>
+            </div>
+            <div class="c-item">
+                <div class="c-label">Email</div>
+                <div class="c-val"><a href="mailto:Contact@liberticorporation.com">Contact@liberticorporation.com</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Liberti Global Corp. All rights reserved.<br>Florida Profit Corporation.</p>
+    <p style="margin-top:16px;">Web developed by <a href="https://www.1bite.studio/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;"><img src="../assets/logos/1bite-logo.png" alt="1bite Studio" style="height:16px;width:auto;filter:invert(1);vertical-align:middle;"></a></p>
+</footer>
+
+<script>
+/* Fade-in observer */
+(function(){var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add('v');o.unobserve(i.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.fi').forEach(function(el){o.observe(el)})})();
+
+/* Mobile menu */
+document.getElementById('mt').addEventListener('click',function(){document.getElementById('mm').classList.toggle('on')});
+function cm(){document.getElementById('mm').classList.remove('on')}
+
+/* 1 — Parallax hero */
+(function(){
+    var h1=document.querySelector('.hero h1');
+    var p=document.querySelector('.hero p');
+    var ticking=false;
+    var prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(prefersReduced) return;
+    window.addEventListener('scroll',function(){
+        if(!ticking){
+            requestAnimationFrame(function(){
+                var s=window.scrollY;
+                if(s<800){
+                    h1.style.transform='translateY('+s*0.3+'px)';
+                    p.style.transform='translateY('+s*0.15+'px)';
+                    p.style.opacity=Math.max(0,1-s/600);
+                }
+                ticking=false;
+            });
+            ticking=true;
+        }
+    });
+})();
+
+/* 2 — Counter animation */
+(function(){
+    var counters=document.querySelectorAll('.st-n');
+    var animated=new Set();
+    function animateCounter(el){
+        var text=el.textContent.trim();
+        var suffix=text.replace(/[\d]/g,'');
+        var target=parseInt(text);
+        if(isNaN(target)) return;
+        var duration=4500;
+        var start=null;
+        el.textContent='0'+suffix;
+        function step(ts){
+            if(!start) start=ts;
+            var progress=Math.min((ts-start)/duration,1);
+            var eased=1-Math.pow(1-progress,3);
+            var current=Math.round(eased*target);
+            el.textContent=current+suffix;
+            if(progress<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+    var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting&&!animated.has(e.target)){
+                animated.add(e.target);
+                animateCounter(e.target);
+            }
+        });
+    },{threshold:0.5});
+    counters.forEach(function(c){obs.observe(c)});
+})();
+
+/* 3 — Card hover glow */
+(function(){
+    var cards=document.querySelectorAll('.card, .org-c, .rm-card');
+    cards.forEach(function(card){
+        var glow=document.createElement('div');
+        glow.className='card-glow';
+        card.appendChild(glow);
+        card.addEventListener('mousemove',function(e){
+            var rect=card.getBoundingClientRect();
+            var x=e.clientX-rect.left;
+            var y=e.clientY-rect.top;
+            glow.style.background='radial-gradient(600px circle at '+x+'px '+y+'px, rgba(41,151,255,.07), transparent 40%)';
+        });
+    });
+})();
+</script>
+</body>
+</html>
